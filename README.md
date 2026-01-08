@@ -1,4 +1,4 @@
-# rbx-animation-api
+# rbx-catalogid-to-assetid
 
 Small API that wraps Roblox asset delivery responses and extracts an `rbxassetid://` animation id.
 
