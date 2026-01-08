@@ -1,0 +1,53 @@
+:root{
+  --bg:#0b0f14;
+  --card:#0f1720;
+  --muted:#9aa4b2;
+  --accent:#7c5cff;
+  --text:#e6eef6;
+  --glass:rgba(255,255,255,0.03);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#07111a 0%, #0b0f14 100%);
+  color:var(--text);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+.wrap{
+  max-width:980px;
+  margin:48px auto;
+  padding:28px;
+}
+
+.hero{padding:28px 32px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: 0 6px 30px rgba(2,6,23,0.6);}
+.hero h1{margin:0;font-size:28px;letter-spacing:-0.5px}
+.lead{color:var(--muted);margin-top:6px}
+.muted{color:var(--muted);font-size:14px}
+
+.actions{margin-top:16px;display:flex;gap:12px;align-items:center}
+.btn{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+.badge img{height:28px}
+
+.card{margin-top:18px;padding:18px;background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+.card h2{margin:0 0 8px 0;font-size:18px}
+.card h3{margin:6px 0;color:#c8d7ff;font-size:15px}
+
+.code{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:12px;border-radius:8px;overflow:auto;margin-top:8px}
+.code pre{margin:0;color:#dbeafe}
+pre{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono","Courier New", monospace;font-size:13px}
+
+.foot{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+.foot a{color:var(--accent);text-decoration:none}
+
+@media (max-width:600px){
+  .wrap{margin:20px;padding:18px}
+  .hero h1{font-size:22px}
+  .actions{flex-direction:column;align-items:flex-start}
+}

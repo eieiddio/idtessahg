@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Page not found • rbx-catalogid-to-assetid</title>
+  <link rel="stylesheet" href="/styles/404.css">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1>rbx-catalogid-to-assetid</h1>
+      <p class="lead">A small API that converts Roblox <strong>catalog IDs</strong> into real <code>rbxassetid://</code> animation IDs.</p>
+
+      <p class="muted">You reached a page that doesn't exist. Here's the project overview instead — maybe it helps you find what you were looking for.</p>
+
+      <div class="actions">
+        <a class="btn" href="/">Go home</a>
+        <a class="btn ghost" href="https://github.com/eieiddio/idtessahg" target="_blank" rel="noopener">View repo</a>
+        <a class="badge" href="https://discord.gg/z5t5fHQvG" target="_blank" rel="noopener">
+          <img alt="discord" src="https://img.shields.io/discord/1365632860756901909?label=discord&logo=discord&color=5865F2">
+        </a>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Endpoints</h2>
+      <h3>GET <code>/api/convert/:assetId</code></h3>
+      <p>Returns:</p>
+      <pre class="code"><code class="language-json">{ "assetId": "rbxassetid://123" }
+
+Returns 404 if the animation ID can’t be found.</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Example Code</h2>
+      <pre class="code"><code class="language-lua">-- uses syn.request so it works in executors
+local API_URL = "https://idtessahg.vercel.app/api/convert/"
+local HttpService = game:GetService("HttpService")
+
+local function converttoassetid(toconvert)
+    local res = request({
+        Url = API_URL .. tostring(toconvert),
+        Method = "GET"
+    })
+
+    if not res or not res.Body then
+        warn("Request failed")
+        return nil
+    end
+
+    local data = HttpService:JSONDecode(res.Body)
+    return data.assetId
+end
+
+-- example catalog page:
+-- https://www.roblox.com/catalog/104525707242142/Flying-Ghost-Halloween
+
+local assetId = converttoassetid(104525707242142)
+print(assetId)</code></pre>
+    </section>
+
+    <footer class="foot">
+      <p class="muted">Made with ❤️ • <a href="https://github.com/eieiddio/idtessahg" target="_blank" rel="noopener">GitHub</a></p>
+    </footer>
+  </main>
+</body>
+</html>
