@@ -1,5 +1,4 @@
-[![Discord](https://img.shields.io/discord/1365632860756901909?label=discord&logo=discord&color=5865F2)](https://discord.gg/z5t5fHQvG)
-![Hosting](https://img.shields.io/badge/hosted%20on-Vercel-black)
+[![Discord](https://img.shields.io/badge/discord-join-5865F2?logo=discord)](https://discord.gg/z5t5fHQvG)
 
 # rbx-catalogid-to-assetid
 
