@@ -1,16 +1,32 @@
+[![Discord](https://img.shields.io/discord/1365632860756901909?label=discord&logo=discord&color=5865F2)](https://discord.gg/z5t5fHQvG)
+![Hosting](https://img.shields.io/badge/hosted%20on-Vercel-black)
+
 # rbx-catalogid-to-assetid
 
-Small API that wraps Roblox asset delivery responses and extracts an `rbxassetid://` animation id.
+A small API that converts Roblox **catalog IDs** into real
+`rbxassetid://` animation IDs.
 
-Endpoints
+Basically, you give it a catalog ID and it grabs the actual animation
+asset ID from Roblox’s asset delivery.
 
-- `GET /convert/:assetId` - returns `{ "assetId": "rbxassetid://..." }` or 404.
-- `POST /convert` - body `{ "assetId": "12345" }` returns same.
+---
 
+## Endpoints
+
+### GET /convert/:assetId
+Returns:
+```json
+{ "assetId": "rbxassetid://123" }
+
+Returns 404 if the animation ID can’t be found.
+```
+
+## Example Code
 
 ```lua
--- i used syn.request so it work for exploits
+-- uses syn.request so it works in executors
 local API_URL = "https://idtessahg.vercel.app/api/convert/"
+local HttpService = game:GetService("HttpService")
 
 local function converttoassetid(toconvert)
     local res = request({
@@ -23,15 +39,13 @@ local function converttoassetid(toconvert)
         return nil
     end
 
-    local data = game:GetService("HttpService"):JSONDecode(res.Body)
+    local data = HttpService:JSONDecode(res.Body)
     return data.assetId
 end
 
---https://www.roblox.com/catalog/104525707242142/Flying-Ghost-Halloween
--- we gonna get the catalogid and put it on the toconvert
-local toconvert = converttoassetid(104525707242142)
-print(toconvert)
-```
+-- example catalog page:
+-- https://www.roblox.com/catalog/104525707242142/Flying-Ghost-Halloween
 
-The Api must return valid json
-`{ "assetId": "rbxassetid://123" }`
+local assetId = converttoassetid(104525707242142)
+print(assetId)
+```
